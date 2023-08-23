@@ -1,103 +1,3 @@
-// // Объявляем переменную jsonData в глобальной области видимости
-// let jsonData;
-// console.log("jsonData", jsonData);
-
-// // Получаем ссылки на элементы select и вывода данных
-// const makerSelect = document.getElementById("makerSelect"); // SELECT MAKER
-// const modelSelect = document.getElementById("modelSelect"); // SELECT MODEL
-// const yearSelect = document.getElementById("yearSelect"); // SELECT YEAR
-
-// const outputDiv = document.getElementById("output"); // OUTPUT
-
-// // Функция для фильтрации моделей на основе выбранного производителя
-// async function filterModels() {
-//   const selectedMaker = makerSelect.value;
-//   // Очищаем предыдущие варианты выбора моделей
-//   modelSelect.innerHTML = '<option value="">-- Все модели --</option>';
-
-//   try {
-//     // Загружаем данные из JSON-файла
-//     const response = await fetch("data.json");
-//     jsonData = await response.json();
-
-//     // Фильтруем модели на основе выбранного производителя
-//     const models = jsonData
-//       .filter((item) => item.Maker === selectedMaker)
-//       .map((item) => item.Model);
-//     console.log("models:", models);
-
-//     // Получаем уникальные модели для выбранного производителя
-//     const uniqueModels = [...new Set(models)];
-//     console.log(uniqueModels);
-
-//     // Заполняем второй select уникальными моделями
-//     uniqueModels.forEach((model) => {
-//       const option = document.createElement("option");
-//       option.text = model;
-//       modelSelect.add(option);
-//     });
-
-//     // Отображаем отфильтрованные данные
-//     displayData();
-//   } catch (error) {
-//     console.error("Ошибка при загрузке или обработке данных из JSON:", error);
-//   }
-// }
-
-// // Функция для отображения выбранных данных
-// function displayData() {
-//   const selectedMaker = makerSelect.value;
-//   const selectedModel = modelSelect.value;
-
-//   // Фильтруем данные на основе выбранного производителя и модели
-//   const filteredData = jsonData.filter(
-//     (item) => item.Maker === selectedMaker && item.Model === selectedModel
-//   );
-
-//   // Генерируем HTML-код для вывода данных
-//   let outputHTML = "<ul>";
-//   filteredData.forEach((item) => {
-//     outputHTML += `
-//     <li>Maker: ${item.Maker}</li>
-//     <li>Модель: ${item.Model}</li>
-//     <li>Комментарии: ${item.Comments}</li>
-//     <li>Год: ${item.Year}</li>`;
-//   });
-//   outputHTML += "</ul>";
-
-//   // Выводим результат
-//   outputDiv.innerHTML = outputHTML;
-// }
-
-// // Загружаем данные из JSON-файла и инициализируем первый select
-// async function initialize() {
-//   try {
-//     // Загружаем данные из JSON-файла
-//     const response = await fetch("data.json");
-//     jsonData = await response.json();
-
-//     // Извлекаем уникальных производителей из данных
-//     const uniqueMakers = [...new Set(jsonData.map((item) => item.Maker))];
-
-//     // Заполняем первый select уникальными производителями
-//     uniqueMakers.forEach((maker) => {
-//       const option = document.createElement("option");
-//       option.text = maker;
-//       makerSelect.add(option);
-//     });
-
-//     // Вызываем функцию filterModels для заполнения второго select и отображения данных
-//     filterModels();
-//   } catch (error) {
-//     console.error("Ошибка при загрузке или обработке данных из JSON:", error);
-//   }
-// }
-
-// // Вызываем функцию initialize для загрузки данных из JSON и настройки select-ов
-// initialize();
-
-////////////////
-
 // Получаем ссылки на элементы select и вывода данных
 const makerSelect = document.getElementById("makerSelect"); // SELECT MAKER
 const modelSelect = document.getElementById("modelSelect"); // SELECT MODEL
@@ -132,8 +32,8 @@ function filterModels() {
   const selectedMaker = makerSelect.value;
 
   // Очищаем предыдущие варианты выбора моделей и годов
-  modelSelect.innerHTML = '<option value="">-- Все модели --</option>';
-  yearSelect.innerHTML = '<option value="">-- Все годы --</option>';
+  modelSelect.innerHTML = '<option value="">-- All models --</option>';
+  yearSelect.innerHTML = '<option value="">-- All years --</option>';
   outputDiv.innerHTML = ""; // Очищаем вывод данных
 
   if (selectedMaker) {
@@ -159,7 +59,7 @@ function filterYears() {
   const selectedModel = modelSelect.value;
 
   // Очищаем предыдущие варианты выбора годов и вывод данных
-  yearSelect.innerHTML = '<option value="">-- Все годы --</option>';
+  yearSelect.innerHTML = '<option value="">-- All years --</option>';
   outputDiv.innerHTML = ""; // Очищаем вывод данных
 
   if (selectedModel) {
@@ -197,20 +97,23 @@ function displayData() {
   filteredData.forEach((item) => {
     outputHTML += `
     <li class="main-info">${item.Maker} - ${item.Model} - ${item.Year}</li>
-    <li>Type of Ignition: ${item["Type of Ignition"]}</li>
-    <li>Type of Key: ${item["Type of Key"]}</li>
+    <li><span class="first-info">Type of Ignition:</span> <span class="second-info">${item["Type of Ignition"]}</li>
+    <li><span class="first-info">Type of Key:</span> <span class="second-info">${item["Type of Key"]}</li>
 
-    <li>No. Buttons: ${item["No. Buttons"]}</li>
-    <li>Price All Keys Lost: ${item["Price All Keys Lost"]}</li>
-    <li>Price Add a Key: ${item["Price Add a Key"]}</li>
-    <li>Price Program Only: ${item["Price Program Only"]}</li>
-    <li>Dealer Price: ${item["Dealer Price"]}</li>
+    <li><span class="first-info">No Buttons:</span> <span class="second-info">${item["No Buttons"]}</span></li>
+    <li><span class="first-info">Price All Keys Lost:</span> <span class="second-info">${item["Price All Keys Lost"]}</span></li>
+    <li><span class="first-info">Price Add a Key:</span> <span class="second-info">${item["Price Add a Key"]}</span></li>
+    <li><span class="first-info">Price Program Only:</span> <span class="second-info">${item["Price Program Only"]}</span></li>
+    <li><span class="first-info">Dealer Price:</span> <span class="second-info">${item["Dealer Price"]}</span></li>
 
-    <li>Parts: ${item["Parts"]}</li>
-    <li>Link:
-    <a href="${item["Link"]}" target="_blank">Visit link</a>
+    <li><span class="first-info">Dealer Program:</span> <span class="second-info">${item["Dealer Program"]}</span></li>
+    <li><span class="first-info">Dealer Emergency Blade:</span> <span class="second-info">${item["Dealer Emergency Blade"]}</span></li>
+
+    <li><span class="first-info">Secure Locks Parts:</span> <span class="second-info">${item["Secure Locks Parts"]}</span></li>
+    <li><span class="first-info">Link:</span><span class="second-info">
+    <a href="${item["Link"]}" target="_blank">Visit link</a></span>
     </li>
-    <li>Comments: ${item["Comments"]}</li>
+    <li><span class="first-info">Comments:</span> <span class="second-info">${item["Comments"]}</span></li>
 
 
 

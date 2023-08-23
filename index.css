@@ -10,7 +10,7 @@
 
   border: 3px solid #ffc632;
   border-radius: 5px;
-  width: 380px;
+  max-width: 100%;
 }
 
 .label {
@@ -22,9 +22,9 @@
 }
 
 .zone {
-  padding-bottom: 14px;
+  padding-bottom: 5px;
   width: 150px;
-  padding-top: 10px;
+  padding-top: 5px;
   border-bottom: 2px dashed #a9811e;
   display: flex;
   flex-direction: column;
@@ -65,7 +65,17 @@ li {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
+}
+
+.first-info {
+  font-weight: 600;
+  color: #8b6502;
+}
+
+.second-info {
+  font-weight: 600;
+  color: #3527d4d0;
 }
