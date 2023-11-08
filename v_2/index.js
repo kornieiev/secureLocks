@@ -174,6 +174,7 @@ function updateOutput() {
 
   let outputHTML = "<ul>";
   filteredData.forEach((item) => {
+    console.log(item);
     outputHTML += `
     <li class="main-info">${item.Maker} - ${item.Model} - ${item.Year}</li>
     <li><span class="first-info">Type of Ignition:</span> <span class="second-info">${item["Type of Ignition"]}</li>
@@ -187,6 +188,10 @@ function updateOutput() {
 
     <li><span class="first-info">Dealer Program:</span> <span class="second-info">${item["Dealer Program"]}</span></li>
     <li><span class="first-info">Dealer Emergency Blade:</span> <span class="second-info">${item["Dealer Emergency Blade"]}</span></li>
+
+    <li><span class="first-info">Cut:</span> <span class="second-info">${item["Cut"]}</span></li>
+    <li><span class="first-info">Dealer Price Total:</span> <span class="second-info">${item["Dealer Price Total"]}</span></li>
+    <li><span class="first-info">Dealer Location:</span> <span class="second-info">${item["Dealer Location"]}</span></li>
 
     <li><span class="first-info">Secure Locks Parts:</span> <span class="second-info">${item["Secure Locks Parts"]}</span></li>
     <li><span class="first-info">Link:</span><span class="second-info">
