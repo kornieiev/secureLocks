@@ -198,6 +198,8 @@ function updateOutput() {
     <a href="${item["Link"]}" target="_blank">Visit link</a></span>
     </li>
     <li><span class="first-info">Comments:</span> <span class="second-info">${item["Comments"]}</span></li>
+    <li><span class="first-info">Part #</span> <span class="second-info">${item["Part #"]}</span></li>
+    
 
     </br>`;
   });
